@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp -vr . /usr/local/share/fonts
+rm /usr/local/share/fonts/linux_install
+fc-cache
