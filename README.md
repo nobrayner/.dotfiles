@@ -1,10 +1,12 @@
 # dotfiles
 My dotfiles (and setup docs)
 
-# Fonts
+## Apps and things
+
+## Fonts
 - FiraCode Nerd Font
 
-# Apps
+## Apps
 - Brave Browser
 - Visual Studio Code
 - Discord
@@ -17,11 +19,10 @@ My dotfiles (and setup docs)
 - Zoom
 - Tidal (Web Installed App)
 
-# Tools (Mac)
-- Homebrew
-
-# Tools
+## Tools
 - Starship Prompt
 - NVM (for nodejs)
 - httpie
-
+- 
+## Tools (Mac)
+- Homebrew
