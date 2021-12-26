@@ -1,0 +1,43 @@
+configuration {
+  display-drun: "run";
+  drun-display-format: "{name}";
+  show-icons: true;
+}
+
+@import "~/.cache/wal/colors-rofi-light"
+
+window {
+  width: 600px;
+  border: 1;
+  border-radius: 8px;
+  border-color: @foreground;
+}
+
+mainbox {
+  spacing: 16px;
+}
+
+listview {
+  spacing: 8px;
+  columns: 2;
+  lines: 8;
+  fixed-columns: true;
+  fixed-lines: true;
+}
+
+element {
+  padding: 6px;
+}
+element selected {
+  border: 1;
+  border-radius: 4px;
+  border-color: @foreground;
+}
+
+element-icon {
+  size: 24px;
+}
+
+element-text {
+  vertical-align: 0.5;
+}
