@@ -2,11 +2,9 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-#Fix Mouse curoor on startup 
-xsetroot -cursor_name left_ptr
-
-bspc monitor DP-4 -d 1
+bspc monitor DP-1 -d 1
 bspc monitor DP-2 -d 2 3 4 5
+bspc monitor HDMI-1 -d 6
 
 # source pywal colors
 . "${HOME}/.cache/wal/colors.sh"
@@ -24,18 +22,13 @@ bspc config gapless_monocle       false
 bspc config focus_follows_pointer true
 bspc config pointer_modifier      control
 
-# Fix cursor
-#xsetroot -cursor_name left_ptr
-
 # Rules
 bspc rule -a Slack:slack node=@^1:^1:/1
 bspc rule -a tidal-hifi:tidal-hifi node=@^1:^1:/2/1
 bspc rule -a Gnome-calendar:gnome-calendar node=@^1:^1:/2/2
-
-#bspc rule -a Slack desktop='^1' follow=off focus=off
-#bspc rule -a tidal-hifi desktop='^1' follow=off focus=off
-#bspc rule -a Gnome-calendar desktop='^1' follow=off focus=off
 bspc rule -a Geary desktop='^3' follow=off focus=off
+bspc rule -a krita desktop='6' follow=off focus=off
+bspc rule -a Xournalpp desktop='6' follow=off focus=off
 
 # Init compositor
 picom &
@@ -43,7 +36,8 @@ picom &
 nitrogen --restore &
 wal -R -n &
 # Set monitor layout
-xrandr --output DP-2 --primary --pos 0x1440 --output DP-4 --pos 420x0 &
+xrandr --output DP-2 --primary --pos 0x1440 --output DP-1 --pos 420x0 --output HDMI-1 --pos 760x2880 &
+
 #
 bash ~/.config/polybar/launch.sh &
 
@@ -51,11 +45,11 @@ bash ~/.config/polybar/launch.sh &
 # Launch apps
 #
 if [[ ! -f ~/.bspwm_init ]]; then
-	bspc wm -l ~/.config/bspwm/launch_state.json
+	#bspc wm -l ~/.config/bspwm/launch_state.json
 
+	slack &
 	pgrep -x tidal-hifi > /dev/null || tidal-hifi &
 	pgrep -x gnome-calendar > /dev/null || gnome-calendar &
-	slack &
 	pgrep -x geary > /dev/null || geary &
 
 	touch ~/.bspwm_init
