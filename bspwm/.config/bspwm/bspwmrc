@@ -26,9 +26,10 @@ bspc config pointer_modifier      control
 bspc rule -a Slack:slack node=@^1:^1:/1
 bspc rule -a tidal-hifi:tidal-hifi node=@^1:^1:/2/1
 bspc rule -a Gnome-calendar:gnome-calendar node=@^1:^1:/2/2
-bspc rule -a Geary desktop='^3' follow=off focus=off
+bspc rule -a Geary desktop='3' follow=off focus=off
 bspc rule -a krita desktop='6' follow=off focus=off
 bspc rule -a Xournalpp desktop='6' follow=off focus=off
+bspc rule -a zoom desktop='4' follow=off focus=off
 
 # Init compositor
 picom &
@@ -48,7 +49,7 @@ if [[ ! -f ~/.bspwm_init ]]; then
 	#bspc wm -l ~/.config/bspwm/launch_state.json
 
 	slack &
-	pgrep -x tidal-hifi > /dev/null || tidal-hifi &
+	pgrep -x tidal-hifi > /dev/null || tidal-hifi --no-sandbox &
 	pgrep -x gnome-calendar > /dev/null || gnome-calendar &
 	pgrep -x geary > /dev/null || geary &
 
