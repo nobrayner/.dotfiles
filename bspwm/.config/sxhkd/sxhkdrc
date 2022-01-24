@@ -19,8 +19,8 @@ super + b
 	brave-browser
 
 # lock screen
-super + l
-	i3lock -i ~/Documents/wallpapers/serena-lock.pg
+# super + l
+# 	i3lock -i ~/Documents/wallpapers/serena-lock.pg
 
 #
 # bspwm hotkeys
