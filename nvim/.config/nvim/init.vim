@@ -1,3 +1,4 @@
+set noshowmode
 set expandtab
 set tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
@@ -33,7 +34,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
-Plug 'AlphaTechnolog/pywal.nvim'
+" Plug 'AlphaTechnolog/pywal.nvim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -43,7 +46,11 @@ if exists('$TMUX')
     let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme pywal
+" colorscheme pywal
+colorscheme nord
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
 
 let g:coq_settings = { 'auto_start': 'shut-up' }
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
