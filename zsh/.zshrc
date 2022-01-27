@@ -5,3 +5,4 @@ alias vi="nvim"
 eval "$(starship init zsh)"
 export VISUAL=vi
 export EDITOR="$VISUAL"
+autoload -Uz compinit && compinit
