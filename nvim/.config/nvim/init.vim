@@ -87,10 +87,13 @@ nnoremap <leader>gd :Telescope lsp_definitions<CR>
 nnoremap <leader>gt :Telescope lsp_type_definitions<CR>
 nnoremap <leader>gi :Telescope lsp_implementations<CR>
 
-nnoremap <leader>gf :Telescope find_files<CR>
-nnoremap <leader>gg :Telescope live_grep<CR>
+nnoremap <leader>ff :Telescope find_files<CR>
+nnoremap <leader>fg :Telescope live_grep<CR>
 
 nnoremap <leader>gc :Telescope git_commits<CR>
+nnoremap <leader>gg :G
+nnoremap <leader>dl :diffget //2
+nnoremap <leader>dr :diffget //3
 
 nnoremap <leader>so :Telescope lsp_document_symbols<CR>
 
