@@ -1,9 +1,6 @@
 set noshowmode
 set expandtab
 set tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype typescriptreact setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 set smartindent
 set scrolloff=8
 set number
@@ -96,3 +93,7 @@ nnoremap <leader>gg :Telescope live_grep<CR>
 nnoremap <leader>gc :Telescope git_commits<CR>
 
 nnoremap <leader>so :Telescope lsp_document_symbols<CR>
+
+autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype typescriptreact setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
