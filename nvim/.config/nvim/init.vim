@@ -91,7 +91,7 @@ nnoremap <leader>ff :Telescope find_files<CR>
 nnoremap <leader>fg :Telescope live_grep<CR>
 
 nnoremap <leader>gc :Telescope git_commits<CR>
-nnoremap <leader>gg :G
+nnoremap <leader>gg :G<space>
 nnoremap <leader>dl :diffget //2
 nnoremap <leader>dr :diffget //3
 
