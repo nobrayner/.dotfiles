@@ -21,9 +21,8 @@ super + b
 super + m
     tidal-hifi --no-sandbox
 
-# lock screen
-# super + l
-# 	i3lock -i ~/Documents/wallpapers/serena-lock.pg
+super + ctrl + l
+    sleep 1; xset dpms force off
 
 #
 # bspwm hotkeys

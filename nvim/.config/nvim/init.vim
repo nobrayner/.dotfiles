@@ -1,6 +1,6 @@
 set noshowmode
 set expandtab
-set tabstop=4 softtabstop=4 shiftwidth=4
+set tabstop=2 softtabstop=2 shiftwidth=2
 set smartindent
 set scrolloff=8
 set number
@@ -54,6 +54,9 @@ let g:lightline = {
 let g:coq_settings = { 'auto_start': 'shut-up' }
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 lua << EOF
+
+-- LSP
+
 local lsp_installer = require("nvim-lsp-installer")
 local coq = require "coq"
 
@@ -71,6 +74,25 @@ lsp_installer.on_server_ready(function(server)
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     server:setup(coq.lsp_ensure_capabilities(opts))
 end)
+
+-- TELESCOPE
+
+require("telescope").setup {
+  pickers = {
+    buffers = {
+      show_all_buffers = true,
+      sort_lastused = true,
+      theme = "dropdown",
+      previewer = false,
+      mappings = {
+        i = {
+          ["<c-d>"] = "delete_buffer",
+        }
+      }
+    }
+  }
+}
+
 EOF
 
 let mapleader = " "
@@ -84,13 +106,15 @@ nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>e :lua vim.diagnostic.open_float()<CR>
 
 " Telescope maps
-nnoremap <leader>gr :Telescope lsp_references<CR>
-nnoremap <leader>gd :Telescope lsp_definitions<CR>
-nnoremap <leader>gt :Telescope lsp_type_definitions<CR>
-nnoremap <leader>gi :Telescope lsp_implementations<CR>
-
-nnoremap <leader>ff :Telescope find_files<CR>
-nnoremap <leader>fg :Telescope live_grep<CR>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ file_ignore_patterns = {'node_modules/.*'} })<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fr :Telescope lsp_references<CR>
+nnoremap <leader>fd :Telescope lsp_definitions<CR>
+nnoremap <leader>ft :Telescope lsp_type_definitions<CR>
+nnoremap <leader>fi :Telescope lsp_implementations<CR>
+nnoremap <leader>fs <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
+nnoremap <leader>fS <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>
 
 nnoremap <leader>gc :Telescope git_commits<CR>
 nnoremap <leader>gg :G<space>
@@ -99,6 +123,4 @@ nnoremap <leader>dr :diffget //3
 
 nnoremap <leader>so :Telescope lsp_document_symbols<CR>
 
-autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype typescriptreact setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype rust setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
