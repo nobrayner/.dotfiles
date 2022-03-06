@@ -23,9 +23,7 @@ bspc config focus_follows_pointer true
 bspc config pointer_modifier      control
 
 # Rules
-#bspc rule -a Slack:slack node=@^1:^1:/1
-#bspc rule -a tidal-hifi:tidal-hifi node=@^1:^1:/2/1
-#bspc rule -a Gnome-calendar:gnome-calendar node=@^1:^1:/2/2
+bspc rule -a pentablet desktop='6' follow=off focus=off
 bspc rule -a krita desktop='6' follow=off focus=off
 bspc rule -a Xournalpp desktop='6' follow=off focus=off
 bspc rule -a zoom desktop='4' follow=off focus=off
@@ -38,5 +36,11 @@ wal -R -n &
 # Set monitor layout
 xrandr --output DP-2 --primary --pos 0x1440 --output DP-0 --pos 420x0 --output HDMI-0 --pos 760x2880 &
 
-#
+# Polybar
 bash ~/.config/polybar/launch.sh &
+
+#
+# Launch things
+#
+
+pgrep -x /usr/lib/pentablet/pentablet > /dev/null || bash /usr/lib/pentablet/pentablet.sh &
