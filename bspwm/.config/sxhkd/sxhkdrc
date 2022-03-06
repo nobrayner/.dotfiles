@@ -19,10 +19,19 @@ super + b
 	brave-browser
 
 super + m
-    tidal-hifi --no-sandbox
+  tidal-hifi --no-sandbox
 
 super + ctrl + l
-    sleep 1; xset dpms force off
+  sleep 1; xset dpms force off
+
+# Init main apps
+super + ctrl + shift + i
+  slack &; \
+  sleep 1; \
+  pgrep -x gnome-calendar > /dev/null || gnome-calendar &; \
+  sleep 1; \
+	bspc node -p north -o 0.3; \
+  pgrep -x tidal-hifi > /dev/null || tidal-hifi --no-sandbox &
 
 #
 # bspwm hotkeys
