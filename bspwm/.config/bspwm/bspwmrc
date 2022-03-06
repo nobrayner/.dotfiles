@@ -2,9 +2,9 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor DP-1 -d 1
+bspc monitor DP-0 -d 1
 bspc monitor DP-2 -d 2 3 4 5
-bspc monitor HDMI-1 -d 6
+bspc monitor HDMI-0 -d 6
 
 # source pywal colors
 . "${HOME}/.cache/wal/colors.sh"
@@ -36,7 +36,7 @@ picom &
 nitrogen --restore &
 wal -R -n &
 # Set monitor layout
-xrandr --output DP-2 --primary --pos 0x1440 --output DP-1 --pos 420x0 --output HDMI-1 --pos 760x2880 &
+xrandr --output DP-2 --primary --pos 0x1440 --output DP-0 --pos 420x0 --output HDMI-0 --pos 760x2880 &
 
 #
 bash ~/.config/polybar/launch.sh &
