@@ -118,6 +118,8 @@ nnoremap <leader>fS <cmd>lua require('telescope.builtin').lsp_workspace_symbols(
 
 nnoremap <leader>gc :Telescope git_commits<CR>
 nnoremap <leader>gg :G<space>
+nnoremap <leader>gb :G blame<CR>
+
 nnoremap <leader>dl :diffget //2
 nnoremap <leader>dr :diffget //3
 
