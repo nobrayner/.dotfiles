@@ -27,6 +27,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
 Plug 'jparise/vim-graphql'
+Plug 'tomlion/vim-solidity'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
