@@ -34,8 +34,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
-" Plug 'AlphaTechnolog/pywal.nvim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'shaunsingh/nord.nvim'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
@@ -46,7 +45,6 @@ if exists('$TMUX')
     let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-" colorscheme pywal
 colorscheme nord
 let g:lightline = {
       \ 'colorscheme': 'nord',
