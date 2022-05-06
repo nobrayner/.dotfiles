@@ -6,7 +6,7 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
 local get_config = function(name)
-	return string.format('require("config/%s")', name)
+	return string.format('require("util").load("config/%s")', name)
 end
 
 -- bootstrap packer if not installed

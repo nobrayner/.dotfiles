@@ -13,3 +13,10 @@ api.nvim_create_autocmd('FileType', {
     bo.softtabstop = 4
   end,
 })
+
+local Packer = api.nvim_create_augroup('Packer', { clear = true })
+api.nvim_create_autocmd('BufWritePost', {
+  pattern = 'plugins.lua',
+  group = Packer,
+  command = 'so ~/.config/nvim/lua/plugins.lua | PackerCompile',
+})

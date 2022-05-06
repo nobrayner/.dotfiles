@@ -1,4 +1,6 @@
-require'options'
-require'plugins'
-require'autocmd'
-require're_maps'
+local util = require'util'
+
+util.load'options'
+util.load'plugins'
+util.load'autocmd'
+util.load'mappins'
