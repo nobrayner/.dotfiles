@@ -1,43 +1,16 @@
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-local server_settings = {
-  tsserver = {},
-  rust_analyzer = {},
-  solidity_ls = {},
-  sumneko_lua = {
-    settings = {
-      Lua = {
-        runtime = {
-          version = 'LuaJIT',
-          path = runtime_path,
-        },
-        diagnostics = {
-          globals = {'vim'},
-        },
-        workspace = {
-          library = vim.api.nvim_get_runtime_file('', true),
-        },
-        telemetry = {
-          enable = false,
-        },
-      },
-    },
-  },
-  html = {},
-  cssls = {},
-  cssmodules_ls = {},
-  eslint = {},
-  prismals = {},
-  yamlls = {},
-  graphql = {},
+local servers = {
+  'tsserver',
+  'rust_analyzer',
+  'solidity_ls',
+  'sumneko_lua',
+  'html',
+  'cssls',
+  'cssmodules_ls',
+  'eslint',
+  'prismals',
+  'yamlls',
+  'graphql',
 }
-
-local servers = {}
-for k, _ in pairs(server_settings) do
-  table.insert(servers, k)
-end
 
 require('nvim-lsp-installer').setup({
   ensure_installed = servers,
@@ -70,7 +43,12 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
 
-for server, settings in pairs(server_settings) do
+for _, server in ipairs(servers) do
+  local has_settings, settings = pcall(require, string.format('lsp_servers/%s', server))
+  if not has_settings then
+    settings = {}
+  end
+
   local server_on_attach = settings.on_attach
 
   -- Set on attach for every server

@@ -43,10 +43,15 @@ require('packer').startup(function(use)
       config = get_config('luasnip'),
     },
     {
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = get_config('null_ls'),
+    },
+    'williamboman/nvim-lsp-installer',
+    {
       'neovim/nvim-lspconfig',
       config = get_config('lsp')
     },
-    'williamboman/nvim-lsp-installer',
   }
 
   -- Utility
