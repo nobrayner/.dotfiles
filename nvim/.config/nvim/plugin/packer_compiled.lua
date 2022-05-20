@@ -218,26 +218,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("util").load("config/cmp")
-time([[Config for nvim-cmp]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("util").load("config/treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: nightfox.nvim
-time([[Config for nightfox.nvim]], true)
-require("util").load("config/nightfox")
-time([[Config for nightfox.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("util").load("config/telescope")
-time([[Config for telescope.nvim]], false)
--- Config for: LuaSnip
-time([[Config for LuaSnip]], true)
-require("util").load("config/luasnip")
-time([[Config for LuaSnip]], false)
 -- Config for: null-ls.nvim
 time([[Config for null-ls.nvim]], true)
 require("util").load("config/null_ls")
@@ -250,6 +230,26 @@ time([[Config for vim-fugitive]], false)
 time([[Config for nvim-lspconfig]], true)
 require("util").load("config/lsp")
 time([[Config for nvim-lspconfig]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("util").load("config/telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("util").load("config/treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: nightfox.nvim
+time([[Config for nightfox.nvim]], true)
+require("util").load("config/nightfox")
+time([[Config for nightfox.nvim]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+require("util").load("config/luasnip")
+time([[Config for LuaSnip]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("util").load("config/cmp")
+time([[Config for nvim-cmp]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
