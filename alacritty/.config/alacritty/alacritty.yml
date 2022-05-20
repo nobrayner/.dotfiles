@@ -6,19 +6,19 @@ live_config_reload: true
 
 font:
   normal:
-    family: FiraCode Nerd Font Mono
+    family: JetBrains Mono
     style: Retina
 
   bold:
-    family: FiraCode Nerd Font Mono
+    family: JetBrains Mono
     style: Bold
 
   italic:
-    family: FiraCode Nerd Font Mono
+    family: JetBrains Mono
     style: Italic
 
   bold_italic:
-    family: FiraCode Nerd Font Mono
+    family: JetBrains Mono
     style: Bold Italic
 
   size: 12.0
