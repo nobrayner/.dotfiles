@@ -97,14 +97,14 @@ symbol = " "
 symbol = " "
 
 [git_branch]
-symbol = " "
+symbol = " "
 format = "[$symbol$branch]($style) "
 
 [golang]
 symbol = " "
 
 [hg_branch]
-symbol = " "
+symbol = " "
 
 [java]
 symbol = " "
