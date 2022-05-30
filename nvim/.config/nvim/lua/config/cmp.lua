@@ -1,8 +1,8 @@
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
-local cmp = require'cmp'
-local lspkind = require'lspkind'
-local ls = require'luasnip'
+local cmp = require 'cmp'
+local lspkind = require 'lspkind'
+local ls = require 'luasnip'
 
 cmp.setup({
   snippet = {
@@ -11,16 +11,14 @@ cmp.setup({
     end,
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-n>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({
-      select = true,
+      select = false,
     }),
   }),
   sources = cmp.config.sources({
@@ -48,7 +46,7 @@ cmp.setup({
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    { name = 'cmp_git' },
   }, {
     { name = 'buffer' },
   })
