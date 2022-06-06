@@ -35,6 +35,18 @@ super + ctrl + shift + i
 	bspc node -p north -o 0.3; \
   /opt/tidal-hifi/tidal-hifi
 
+Print
+  flameshot gui --clipboard --accept-on-select
+
+shift + Print
+  flameshot gui --clipboard
+
+super + alt + ctrl + m
+  amixer set Capture toggle
+
+super + alt + ctrl + shift + m
+  amixer set Master toggle
+
 #
 # bspwm hotkeys
 #
