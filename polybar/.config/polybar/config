@@ -28,10 +28,11 @@ tray-offset-y = 0
 tray-padding = 2
 tray-scale = 1.0
 
-modules-left = workspaces cpu memory music
-modules-center = clock
+modules-left = workspaces cpu memory 
+modules-center = microphone headphones clock
 ;Don't set any right modules - save for tray
 modules-right = 
+
 
 [module/workspaces]
 type = internal/xworkspaces
@@ -65,9 +66,10 @@ date = %d/%m/%y
 time = %I:%M %P
 label = %time%
 
-format-padding = 2
+format-padding = 1
 ;format-background = ${colors.color4}
 ;format-foreground = ${colors.foreground}
+
 
 [module/memory]
 type = internal/memory
@@ -110,6 +112,7 @@ format-background = ${colors.color3}
 ;   %gb_swap_used%
 label = " %percentage_used%% (%mb_used%)"
 
+
 [module/cpu]
 type = internal/cpu
 
@@ -127,9 +130,18 @@ format-background = ${colors.color2}
 ;   %percentage-core[1-9]% - load percentage for specific core
 label = " %percentage%%"
 
-[module/music]
+
+[module/microphone]
 type = custom/script
-exec = ~/.config/polybar/scripts/music.sh
+exec = amixer get Capture | grep -q "Mono: Capture.*\[on\]" && echo "" || echo ""
+click-left = amixer set Capture toggle
 interval = 1
-format-padding = 2
-format-prefix = "  "
+format-padding = 1
+
+
+[module/headphones]
+type = custom/script
+exec = amixer get Master | grep -q "\[on\]" && echo "" || echo "ﳌ"
+click-left = amixer set Master toggle
+interval = 1
+format-padding = 1
