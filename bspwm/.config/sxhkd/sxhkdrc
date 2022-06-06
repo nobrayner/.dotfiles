@@ -20,7 +20,7 @@ super + b
 
 # music player
 super + m
-  tidal-hifi --no-sandbox
+  /opt/tidal-hifi/tidal-hifi
 
 # screen off / lockscreen
 super + ctrl + l
@@ -33,7 +33,7 @@ super + ctrl + shift + i
   pgrep -x gnome-calendar > /dev/null || gnome-calendar &; \
   sleep 1; \
 	bspc node -p north -o 0.3; \
-  pgrep -x tidal-hifi > /dev/null || tidal-hifi --no-sandbox &
+  /opt/tidal-hifi/tidal-hifi
 
 #
 # bspwm hotkeys
