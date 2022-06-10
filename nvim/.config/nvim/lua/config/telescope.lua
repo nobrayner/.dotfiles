@@ -12,7 +12,7 @@ require("telescope").setup({
       }
     },
     find_files = {
-      file_ignore_patterns = {'node_modules/.*', '.git/.*'},
+      file_ignore_patterns = { 'node_modules/.*', '.git/.*' },
       hidden = true,
     },
   }
