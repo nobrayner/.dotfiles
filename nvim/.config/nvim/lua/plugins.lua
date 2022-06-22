@@ -6,18 +6,18 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
 local get_config = function(name)
-	return string.format('require("util").load("config/%s")', name)
+  return string.format('require("util").load("config/%s")', name)
 end
 
 -- bootstrap packer if not installed
 if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({
-		'git',
-		'clone',
-		'https://github.com/wbthomason/packer.nvim',
-		install_path,
-	})
-	execute('packadd packer.nvim')
+  fn.system({
+    'git',
+    'clone',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path,
+  })
+  execute('packadd packer.nvim')
 end
 
 require('packer').startup(function(use)
@@ -28,13 +28,13 @@ require('packer').startup(function(use)
     {
       'hrsh7th/nvim-cmp',
       requires = {
-        {'hrsh7th/cmp-nvim-lsp'},
-        {'hrsh7th/cmp-nvim-lua'},
-        {'hrsh7th/cmp-buffer'},
-        {'hrsh7th/cmp-path'},
-        {'onsails/lspkind.nvim'},
-        {'saadparwaiz1/cmp_luasnip'},
-        {'L3MON4D3/LuaSnip'},
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-nvim-lua' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'onsails/lspkind.nvim' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'L3MON4D3/LuaSnip' },
       },
       config = get_config('cmp'),
     },
@@ -43,9 +43,9 @@ require('packer').startup(function(use)
       config = get_config('luasnip'),
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        config = get_config('null_ls'),
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+      config = get_config('null_ls'),
     },
     'williamboman/nvim-lsp-installer',
     {
@@ -91,6 +91,7 @@ require('packer').startup(function(use)
     config = get_config('treesitter'),
   }
 
+  -- Theme
   use {
     'EdenEast/nightfox.nvim',
     config = get_config('nightfox'),
@@ -102,5 +103,13 @@ require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     event = 'VimEnter',
     config = get_config('lualine'),
+  }
+
+  -- Markdown
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
   }
 end)
