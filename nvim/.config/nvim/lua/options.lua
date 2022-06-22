@@ -22,6 +22,7 @@ o.splitbelow = true
 o.splitright = true
 o.ignorecase = true
 o.smartcase = true
+o.laststatus = 3
 
 --Remap space as leader key
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
