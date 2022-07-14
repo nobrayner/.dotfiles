@@ -32,7 +32,7 @@ super + ctrl + shift + i
   sleep 1; \
   pgrep -x gnome-calendar > /dev/null || gnome-calendar &; \
   sleep 1; \
-	bspc node -p north -o 0.3; \
+	bspc node -p north -o 0.4; \
   /opt/tidal-hifi/tidal-hifi
 
 Print
@@ -51,13 +51,16 @@ super + alt + ctrl + shift + m
 # bspwm hotkeys
 #
 
+# layout(ish)
+super + shift + ctrl + t
+  bspc node @/ -r 0.5721
+
 # restart bspwm
 super + ctrl + r
 	bspc wm -r
 
 # quit bspwm
 super + ctrl + q
-	rm -f ~/.bspwm_init; \
 	bspc quit
 
 # close and kill
