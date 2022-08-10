@@ -233,14 +233,6 @@ time([[Setup for markdown-preview.nvim]], false)
 time([[Config for nvim-treesitter]], true)
 require("util").load("config/treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: LuaSnip
-time([[Config for LuaSnip]], true)
-require("util").load("config/luasnip")
-time([[Config for LuaSnip]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require("util").load("config/null_ls")
-time([[Config for null-ls.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require("util").load("config/lsp")
@@ -253,14 +245,22 @@ time([[Config for telescope.nvim]], false)
 time([[Config for nvim-cmp]], true)
 require("util").load("config/cmp")
 time([[Config for nvim-cmp]], false)
--- Config for: vim-fugitive
-time([[Config for vim-fugitive]], true)
-require("util").load("config/fugitive")
-time([[Config for vim-fugitive]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+require("util").load("config/luasnip")
+time([[Config for LuaSnip]], false)
 -- Config for: nightfox.nvim
 time([[Config for nightfox.nvim]], true)
 require("util").load("config/nightfox")
 time([[Config for nightfox.nvim]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require("util").load("config/null_ls")
+time([[Config for null-ls.nvim]], false)
+-- Config for: vim-fugitive
+time([[Config for vim-fugitive]], true)
+require("util").load("config/fugitive")
+time([[Config for vim-fugitive]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
