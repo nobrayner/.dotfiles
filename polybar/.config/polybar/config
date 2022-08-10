@@ -28,7 +28,7 @@ tray-offset-y = 0
 tray-padding = 2
 tray-scale = 1.0
 
-modules-left = workspaces cpu memory 
+modules-left = workspaces cpu memory terminal
 modules-center = microphone headphones clock
 ;Don't set any right modules - save for tray
 modules-right = 
@@ -145,3 +145,8 @@ exec = amixer get Master | grep -q "\[on\]" && echo "" || echo "ﳌ"
 click-left = amixer set Master toggle
 interval = 1
 format-padding = 1
+
+[module/terminal]
+type = custom/text
+content = 
+click-left = kitty
