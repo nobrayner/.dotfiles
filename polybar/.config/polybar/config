@@ -133,7 +133,7 @@ label = " %percentage%%"
 
 [module/microphone]
 type = custom/script
-exec = amixer get Capture | grep -q "Mono: Capture.*\[on\]" && echo "" || echo ""
+exec = amixer get Capture | grep -q "\[on\]" && echo "" || echo ""
 click-left = amixer set Capture toggle
 interval = 1
 format-padding = 1
