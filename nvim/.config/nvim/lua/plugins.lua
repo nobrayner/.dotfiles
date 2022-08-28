@@ -85,10 +85,21 @@ require('packer').startup(function(use)
     },
   }
 
+  -- Code Authoring
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = get_config('treesitter'),
+    {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      config = get_config('treesitter'),
+    },
+    {
+      'windwp/nvim-ts-autotag',
+      config = get_config('nvim-ts-autotag'),
+    },
+    {
+      'windwp/nvim-autopairs',
+      config = get_config('nvim-autopairs'),
+    }
   }
 
   -- Theme
