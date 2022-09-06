@@ -14,3 +14,5 @@ eval "$(starship init zsh)"
 export VISUAL=vi
 export EDITOR="$VISUAL"
 autoload -Uz compinit && compinit
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
