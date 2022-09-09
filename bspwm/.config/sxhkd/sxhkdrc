@@ -53,7 +53,7 @@ super + alt + ctrl + shift + m
 
 # layout(ish)
 super + shift + ctrl + t
-  bspc node @/ -r 0.5721
+  bspc node @/ -r 0.5765
 
 # restart bspwm
 super + ctrl + r
