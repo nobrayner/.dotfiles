@@ -80,6 +80,7 @@ disabled = false
 
 [aws]
 symbol = " "
+disabled = true
 
 [conda]
 symbol = " "
