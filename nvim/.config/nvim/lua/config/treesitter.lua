@@ -16,6 +16,7 @@ local languages = {
   'graphql',
   'dockerfile',
   'astro',
+  'elixir',
 }
 
 require 'nvim-treesitter.configs'.setup {
