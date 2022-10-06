@@ -10,6 +10,8 @@ local servers = {
   'prismals',
   'yamlls',
   'graphql',
+  'elixirls',
+  'elmls',
 }
 
 require('nvim-lsp-installer').setup({
