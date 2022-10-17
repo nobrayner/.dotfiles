@@ -1,11 +1,15 @@
-export PATH="$PATH:/home/zorua/.local/bin:$(yarn global bin)"
-#cat ~/.cache/wal/sequences
-#source ~/.cache/wal/colors-tty.sh
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 bindkey -s ^f "tmux-sessionizer\n"
+
+# Aliases
 alias vi="nvim"
 alias pod="podman"
 alias podcom="podman-compose"
-
 # Better dir navigation
 alias cd="pushd"
 alias pd="popd"
@@ -15,12 +19,11 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 autoload -Uz compinit && compinit
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# pnpm
+export LOCAL_BIN="$HOME/.local/bin"
+export YARN_BIN="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 export PNPM_HOME="/home/zorua/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+
+export PATH="$PNPM_HOME:$YARN_BIN:$LOCAL_BIN:$PATH"
 
 # asdf
 . $HOME/.sources/asdf/asdf.sh
