@@ -10,8 +10,8 @@ alias podcom="podman-compose"
 alias cd="pushd"
 alias pd="popd"
 
-eval "$(starship init zsh)"
-export VISUAL=vi
+# Use nvim for editor
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 autoload -Uz compinit && compinit
 
@@ -21,3 +21,11 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PNPM_HOME="/home/zorua/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# asdf
+. $HOME/.sources/asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit && compinit
+
+# This should always be last
+eval "$(starship init zsh)"
