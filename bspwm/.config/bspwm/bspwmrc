@@ -6,13 +6,6 @@ bspc monitor DP-0 -d 1
 bspc monitor DP-2 -d 2 3 4 5
 bspc monitor HDMI-0 -d 6
 
-# source pywal colors
-. "${HOME}/.cache/wal/colors.sh"
-
-bspc config normal_border_color "$color0"
-bspc config active_border_color "$color6"
-bspc config focused_border_color "$color7"
-
 bspc config border_width          0
 bspc config window_gap            12
 bspc config ignore_ewmh_focus     true
@@ -40,7 +33,10 @@ nitrogen --restore &
 xrandr --output DP-2 --primary --pos 0x1440 --output DP-0 --pos 420x0 --output HDMI-0 --pos 760x2880 &
 
 # Polybar
-bash ~/.config/polybar/launch.sh &
+left_padding=$(bspc config -m DP-2 left_padding)
+total_padding=$(($left_padding+$(bspc config -m DP-2 right_padding)))
+window_gap=$(bspc config window_gap)
+WIDTH=$((3440-$total_padding-$window_gap-$window_gap)) OFFSET=$(($window_gap+$left_padding)) ~/.config/polybar/launch.sh &
 
 #
 # Launch things

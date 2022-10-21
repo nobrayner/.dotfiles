@@ -1,26 +1,23 @@
 [colors]
 background = #88000000
 foreground = #fff
-color0 = ${xrdb:color0}
-color1 = ${xrdb:color1}
-color2 = ${xrdb:color2}
-color3 = ${xrdb:color3}
-color4 = ${xrdb:color4}
-color5 = ${xrdb:color5}
-color6 = ${xrdb:color6}
-color7 = ${xrdb:color7}
 
 [bar/main]
 background = ${colors.background}
 foreground = ${colors.foreground}
 font-0 = FiraCode Nerd Font:size=12;2
 
+override-redirect = false
+wm-restack = bspwm
+
 height = 24
-width = 100%:-12
-offset-x = 12
+width = ${env:WIDTH}
+offset-x = ${env:OFFSET}
+
+fixed-center = true
 
 tray-position = right
-tray-detached = false
+tray-detached = true
 tray-maxsize = 16
 tray-background = ${colors.background}
 tray-offset-x = -12

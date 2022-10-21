@@ -54,6 +54,9 @@ super + alt + ctrl + shift + m
 # layout(ish)
 super + shift + ctrl + t
   bspc node @/ -r 0.5765
+super + shift + ctrl + s
+  ~/.config/bspwm/toggle-stream-mode.sh; \
+  bspc wm -r
 
 # restart bspwm
 super + ctrl + r
