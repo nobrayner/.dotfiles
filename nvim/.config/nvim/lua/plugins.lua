@@ -63,6 +63,11 @@ require('packer').startup(function(use)
     'tpope/vim-surround',
     'tpope/vim-commentary',
     'tpope/vim-repeat',
+    {
+      'folke/todo-comments.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+      config = get_config('todo-comments'),
+    },
   }
 
   -- Languages
