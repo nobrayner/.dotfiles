@@ -42,8 +42,7 @@ end
 
 local lspconfig = require('lspconfig')
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
+local capabilities = require'cmp_nvim_lsp'.default_capabilities()
 
 for _, server in ipairs(servers) do
   local has_settings, settings = pcall(require, string.format('lsp_servers/%s', server))
