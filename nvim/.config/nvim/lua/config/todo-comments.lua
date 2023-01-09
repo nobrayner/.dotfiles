@@ -10,6 +10,10 @@ require 'todo-comments'.setup {
       icon = ' ',
       color = 'info',
     },
+    PICKUP = {
+      icon = '喇',
+      color = 'warning',
+    },
   },
   highlight = {
     multiline = false,
