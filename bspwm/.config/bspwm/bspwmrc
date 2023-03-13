@@ -2,8 +2,8 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor DP-0 -d 1
-bspc monitor DP-2 -d 2 3 4 5
+bspc monitor DP-2 -d 1
+bspc monitor DP-0 -d 2 3 4 5
 bspc monitor HDMI-0 -d 6
 
 bspc config border_width          0
@@ -24,17 +24,17 @@ bspc rule -a 'zoom ' follow=off focus=off state=floating
 bspc rule -a discord desktop='5' follow=off focur=off
 
 # Init compositor
-picom &
+picom --experimental-backends &
 
 # Set wallpapers
 nitrogen --restore &
 
 # Set monitor layout
-xrandr --output DP-2 --primary --pos 0x1440 --output DP-0 --pos 420x0 --output HDMI-0 --pos 760x2880 &
+xrandr --output DP-0 --primary --pos 0x1440 --output DP-2 --pos 420x0 --output HDMI-0 --pos 760x2880 &
 
 # Polybar
-left_padding=$(bspc config -m DP-2 left_padding)
-total_padding=$(($left_padding+$(bspc config -m DP-2 right_padding)))
+left_padding=$(bspc config -m DP-0 left_padding)
+total_padding=$(($left_padding+$(bspc config -m DP-0 right_padding)))
 window_gap=$(bspc config window_gap)
 WIDTH=$((3440-$total_padding-$window_gap-$window_gap)) OFFSET=$(($window_gap+$left_padding)) ~/.config/polybar/launch.sh &
 
