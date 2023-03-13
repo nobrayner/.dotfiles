@@ -42,16 +42,38 @@ require('packer').startup(function(use)
       'L3MON4D3/LuaSnip',
       config = get_config('luasnip'),
     },
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
     {
-      "jose-elias-alvarez/null-ls.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
-      config = get_config('null_ls'),
+      'jay-babu/mason-null-ls.nvim',
+      after = { 'mason.nvim', 'null-ls.nvim' },
+      config = get_config('mason-null-ls'),
     },
-    'williamboman/nvim-lsp-installer',
+    'mfussenegger/nvim-dap',
+    {
+      'jay-babu/mason-nvim-dap.nvim',
+      after = { 'mason.nvim', 'nvim-dap' },
+      config = get_config('mason-nvim-dap'),
+    },
     {
       'neovim/nvim-lspconfig',
       config = get_config('lsp')
     },
+  }
+
+  -- Copilot
+  use {
+    {
+      'zbirenbaum/copilot.lua',
+      cmd = "Copilot",
+      event = "InsertEnter",
+    },
+    {
+      'zbirenbaum/copilot-cmp',
+      after = { "copilot.lua" },
+      config = get_config('copilot'),
+    }
   }
 
   -- Utility
@@ -61,13 +83,16 @@ require('packer').startup(function(use)
       config = get_config('fugitive'),
     },
     'tpope/vim-surround',
-    'tpope/vim-commentary',
     'tpope/vim-repeat',
     {
       'folke/todo-comments.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
       config = get_config('todo-comments'),
     },
+    {
+      'numToStr/Comment.nvim',
+      config = get_config('comment'),
+    }
   }
 
   -- Languages

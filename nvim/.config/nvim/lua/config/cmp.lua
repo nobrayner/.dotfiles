@@ -22,6 +22,7 @@ cmp.setup({
     }),
   }),
   sources = cmp.config.sources({
+    { name = 'copilot' },
     { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'path' },
@@ -33,6 +34,7 @@ cmp.setup({
     format = lspkind.cmp_format({
       mode = 'symbol_text',
       menu = {
+        copilot = '[COPILOT]',
         buffer = '[BUF]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[VIM API]',
