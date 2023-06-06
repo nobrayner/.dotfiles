@@ -22,6 +22,9 @@ super + b
 super + m
   /opt/tidal-hifi/tidal-hifi
 
+super + ctrl + m
+  curl http://localhost:47836/playpause
+
 # screen off / lockscreen
 super + ctrl + l
   sleep 1; xset dpms force off
@@ -30,9 +33,6 @@ super + ctrl + l
 super + ctrl + shift + i
   slack &; \
   sleep 1; \
-  pgrep -x gnome-calendar > /dev/null || gnome-calendar &; \
-  sleep 1; \
-	bspc node -p north -o 0.4; \
   /opt/tidal-hifi/tidal-hifi
 
 Print
@@ -59,11 +59,11 @@ super + shift + ctrl + s
   bspc wm -r
 
 # restart bspwm
-super + ctrl + r
+super + ctrl + shift + r
 	bspc wm -r
 
 # quit bspwm
-super + ctrl + q
+super + ctrl + shift + q
 	bspc quit
 
 # close and kill
@@ -90,6 +90,25 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
+# rotate node
+super + ctrl + r
+  bspc node @parent --rotate 90
+
+super + ctrl + {c, shift + c}
+  bspc node @parent --circulate {forward, backward}
+
+super + ctrl {f, shift + f}
+  bspc node @parent --flip {horizontal, vertical}
+
+super + ctrl + e
+  bspc node @parent --equalize
+
+super + ctrl + b
+  bspc node @parent --balance
+
+super + ctrl + i
+  bspc node --insert-receptacle
+
 # focus the older or newer node in the focus history
 # super + {o,i}
 # 	bspc wm -h off; \
@@ -97,7 +116,7 @@ super + {_,shift + }{h,j,k,l}
 # 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
+super + {_,shift + }{0-8,9}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
