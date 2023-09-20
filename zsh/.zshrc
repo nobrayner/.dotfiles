@@ -36,7 +36,10 @@ eval "$(starship init zsh)"
 
 # pnpm
 export PNPM_HOME="/home/zorua/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -44,3 +47,10 @@ if [ -f '/home/zorua/.local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/home/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/zorua/.local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/zorua/.local/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/home/zorua/.bun/_bun" ] && source "/home/zorua/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
