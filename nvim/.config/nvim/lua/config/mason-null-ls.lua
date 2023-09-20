@@ -1,11 +1,7 @@
-require("mason-null-ls").setup({
-  ensure_installed = { "stylua", "prettierd", "rustfmt" },
-  automatic_setup = true,
-})
-
 local null_ls = require("null-ls")
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 null_ls.setup({
   sources = { null_ls.builtins.formatting.rustfmt },
   on_attach = function(client, bufnr)
@@ -22,4 +18,8 @@ null_ls.setup({
   end,
 })
 
-require("mason-null-ls").setup_handlers()
+require("mason-null-ls").setup({
+  ensure_installed = { "stylua", "prettierd", "rustfmt" },
+  automatic_setup = true,
+})
+
