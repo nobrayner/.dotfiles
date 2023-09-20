@@ -23,7 +23,7 @@ super + m
   /opt/tidal-hifi/tidal-hifi
 
 super + ctrl + m
-  curl http://localhost:47836/playpause
+  playerctl -p tidal-hifi play-pause
 
 # screen off / lockscreen
 super + ctrl + l
