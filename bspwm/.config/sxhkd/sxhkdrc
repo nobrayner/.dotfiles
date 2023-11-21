@@ -25,6 +25,12 @@ super + m
 super + ctrl + m
   playerctl -p tidal-hifi play-pause
 
+super + ctrl + c
+  playerctl next
+
+super + ctrl + x
+  playerctl previous
+
 # screen off / lockscreen
 super + ctrl + l
   sleep 1; xset dpms force off
