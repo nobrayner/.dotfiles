@@ -11,6 +11,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 alias vi="nvim"
 alias pod="podman"
 alias podcom="podman-compose"
+alias docker="podman"
 # Better dir navigation
 alias cd="pushd"
 alias pd="popd"

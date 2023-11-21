@@ -92,7 +92,14 @@ require('packer').startup(function(use)
     {
       'numToStr/Comment.nvim',
       config = get_config('comment'),
-    }
+    },
+    {
+      "kdheepak/lazygit.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+      },
+      config = get_config('lazygit'),
+    },
   }
 
   -- Languages

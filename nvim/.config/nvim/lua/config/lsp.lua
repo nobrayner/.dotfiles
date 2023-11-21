@@ -8,6 +8,8 @@ local servers = {
 	"eslint",
 	"yamlls",
 	"astro",
+  "tailwindcss",
+  "prismals",
 }
 
 require("mason").setup()
