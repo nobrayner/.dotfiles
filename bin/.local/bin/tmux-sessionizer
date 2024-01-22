@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /w/next-chapter/ /w/elestrals/ /p/g ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find /w/* /p/g ~/.dotfiles ~/.setup -mindepth 1 -maxdepth 2 -name .git -type d -exec dirname {} \; | fzf)
 fi
 
 if [[ -z $selected ]]; then
