@@ -26,7 +26,7 @@ tray-offset-y = 0
 tray-padding = 2
 tray-scale = 1.0
 
-modules-left = workspaces cpu memory terminal
+modules-left = workspaces cpu memory network terminal
 modules-center = microphone headphones clock
 ;Don't set any right modules - save for tray
 modules-right = 
@@ -144,7 +144,14 @@ click-left = amixer set Master toggle
 interval = 1
 format-padding = 1
 
+[module/network]
+type = custom/script
+exec = echo " $(nmcli -f IN-USE,SIGNAL device wifi | grep -q "\*")"
+interval = 1
+format-padding = 1
+
 [module/terminal]
 type = custom/text
-content = 
+content = " "
 click-left = kitty
+format-padding = 1

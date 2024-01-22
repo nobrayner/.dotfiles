@@ -26,10 +26,10 @@ super + ctrl + m
   playerctl -p tidal-hifi play-pause
 
 super + ctrl + c
-  playerctl next
+  playerctl -p tidal-hifi next
 
 super + ctrl + x
-  playerctl previous
+  playerctl -p tidal-hifi previous
 
 # screen off / lockscreen
 super + ctrl + l

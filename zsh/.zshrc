@@ -12,9 +12,13 @@ alias vi="nvim"
 alias pod="podman"
 alias podcom="podman-compose"
 alias docker="podman"
+
 # Better dir navigation
 alias cd="pushd"
 alias pd="popd"
+
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # Use nvim for editor
 export VISUAL=nvim
@@ -25,7 +29,7 @@ export LOCAL_BIN="$HOME/.local/bin"
 export BIN_YARN="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 export PNPM_HOME="/home/zorua/.local/share/pnpm"
 
-export PATH="$PNPM_HOME:$BIN_YARN:$LOCAL_BIN:$PATH"
+export PATH="$PNPM_HOME:$BIN_YARN:$LOCAL_BIN:$ANDROID_STUDIO:$PATH"
 
 # asdf
 . $HOME/.sources/asdf/asdf.sh
