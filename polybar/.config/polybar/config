@@ -26,7 +26,7 @@ tray-offset-y = 0
 tray-padding = 2
 tray-scale = 1.0
 
-modules-left = workspaces cpu memory network terminal
+modules-left = workspaces cpu memory network terminal playing
 modules-center = microphone headphones clock
 ;Don't set any right modules - save for tray
 modules-right = 
@@ -88,7 +88,7 @@ interval = 1
 ;   <ramp-swap-free>
 format = <label>
 format-prefix = " "
-format-padding = 2
+format-padding = 1
 format-background = ${colors.color3}
 
 ; Available tokens:
@@ -117,7 +117,7 @@ type = internal/cpu
 interval = 1
 
 format = <label>
-format-padding = 2
+format-padding = 1
 format-prefix = " "
 format-background = ${colors.color2}
 
@@ -152,6 +152,14 @@ format-padding = 1
 
 [module/terminal]
 type = custom/text
-content = " "
+content = ""
 click-left = kitty
-format-padding = 1
+format-padding = 2
+
+[module/playing]
+type = custom/script
+exec = playerctl -p tidal-hifi status | grep "Playing" &> /dev/null  && echo "$(playerctl -p tidal-hifi metadata title) - $(playerctl -p tidal-hifi metadata artist)" || echo "-"
+click = playerctl -p tidal-hifi play-pause
+interval = 1
+format-padding = 2
+format-prefix = " "

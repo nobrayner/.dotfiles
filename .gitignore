@@ -3,3 +3,5 @@
 # Don't include the packer build artifact
 nvim/.config/nvim/plugin/packer_compiled.lua
 
+# This ain't shareable, sorry
+wallpapers/FlammamothBackground.png
