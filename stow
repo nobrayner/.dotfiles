@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="bspwm,picom,polybar,rofi,starship,nvim,tmux,zsh,asdf,bin,kitty"
+    STOW_FOLDERS="bspwm,picom,polybar,rofi,starship,nvim,tmux,zsh,asdf,bin,kitty,tasktime"
 fi
 
 if [[ -z $DOTFILES ]]; then

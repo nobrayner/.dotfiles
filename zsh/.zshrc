@@ -12,6 +12,7 @@ alias vi="nvim"
 alias pod="podman"
 alias podcom="podman-compose"
 alias docker="podman"
+alias lg="lazygit"
 
 # Better dir navigation
 alias cd="pushd"

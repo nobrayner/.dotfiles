@@ -10,6 +10,7 @@ local servers = {
 	"astro",
   "tailwindcss",
   "prismals",
+  "gleam",
 }
 
 require("mason").setup()
