@@ -81,6 +81,10 @@ disabled = false
 [aws]
 symbol = " "
 disabled = true
+[gcloud]
+disabled = true
+[azure]
+disabled = true
 
 [conda]
 symbol = " "
