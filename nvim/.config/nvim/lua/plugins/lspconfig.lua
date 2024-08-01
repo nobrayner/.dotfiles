@@ -32,7 +32,7 @@ return {
 
 				keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 				keymap.set("n", "<leader>df", vim.diagnostic.goto_next, opts)
-				keymap.set("n", "<leader>db", vim.diagnostic.goto_prev, opts)
+				keymap.set("n", "<leader>dB", vim.diagnostic.goto_prev, opts)
 
 				keymap.set("n", "<leader>rs", ":LspRestart<cr>", opts)
 			end,

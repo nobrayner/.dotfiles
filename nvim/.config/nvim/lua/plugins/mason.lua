@@ -20,7 +20,7 @@ return {
 					"html",
 					"cssls",
 					"cssmodules_ls",
-					"eslint",
+					-- "eslint",
 					"yamlls",
 					"astro",
 					"tailwindcss",
@@ -32,7 +32,10 @@ return {
 				ensure_installed = {
 					"prettierd",
 					"stylua",
-					"eslint_d",
+					-- "eslint_d",
+					"codelldb",
+					"node-debug2-adapter",
+					"chrome-debug-adapter",
 				},
 			})
 		end,
