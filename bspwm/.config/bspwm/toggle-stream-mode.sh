@@ -6,4 +6,3 @@ if [[ $(bspc config -m DP-0 right_padding) -eq 0 ]]; then
 else
   bspc config -m DP-0 right_padding 0
 fi
-
