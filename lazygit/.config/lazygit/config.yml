@@ -1,0 +1,6 @@
+customCommands:
+  - key: "t"
+    context: "global"
+    command: 'echo "Hello world!"'
+    showOutput: true
+    outputTitle: "Testing!!!"

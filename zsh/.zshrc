@@ -32,11 +32,6 @@ export PNPM_HOME="/home/zorua/.local/share/pnpm"
 
 export PATH="$PNPM_HOME:$BIN_YARN:$LOCAL_BIN:$ANDROID_STUDIO:$PATH"
 
-# asdf
-. $HOME/.sources/asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit && compinit
-
 # This should always be last
 eval "$(starship init zsh)"
 
