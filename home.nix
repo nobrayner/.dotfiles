@@ -10,6 +10,7 @@
     ./browser/home.nix
     ./git/home.nix
     ./jq/home.nix
+    ./obs/home.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;
@@ -49,6 +50,16 @@
     mate.eom
     godot_4
     lm_sensors
+    mgba
+    tree
+    libretro.citra
+    httpie
+    openssl
+    imagemagick
+    vlc
+    htop
+    gparted
+    unrar
     
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

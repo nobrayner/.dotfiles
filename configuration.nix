@@ -3,6 +3,8 @@
 {
   imports = [
     ./bspwm/system.nix
+    ./steam/system.nix
+    ./android/system.nix
   ];
 
   hardware.opengl.enable = true;
@@ -97,15 +99,23 @@
     wget
     git
     killall
+    neofetch
   ];
 
   fileSystems."/w" = {
     device = "/dev/sda1";
     fsType = "btrfs";
+    neededForBoot = false;
   };
   fileSystems."/p" = {
     device = "/dev/nvme0n1p1";
     fsType = "btrfs";
+    neededForBoot = false;
+  };
+
+  services.udisks2 = {
+    enable = true;
+    mountOnMedia = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

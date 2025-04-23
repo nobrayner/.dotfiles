@@ -14,42 +14,73 @@
       bold_font = "JetBrains Mono Bold";
       italic_font  = "JetBrains Mono Italic";
       bold_italic_font = "JetBrains Mono Bold Italic";
-      font_size  = "12.0";
+      font_size  = "16.0";
       disable_ligatures = "cursor";
 
-      background_opacity = "0.6";
+      background_opacity = "0.93";
 
-      # Colors
-      foreground = "#d8dee9";
-      # background = "#2e3440";
-      background = "#000000";
-      selection_foreground = "#000000";
-      selection_background = "#4c566a";
-      cursor = "#d8dee9";
+      # The basic colors
+      foreground              = "#4c4f69";
+      background              = "#eff1f5";
+      selection_foreground    = "#eff1f5";
+      selection_background    = "#dc8a78";
+
+      # Cursor colors
+      cursor                  = "#dc8a78";
+      cursor_text_color       = "#eff1f5";
+
+      # URL underline color when hovering with mouse
+      url_color               = "#dc8a78";
+
+      # Kitty window border colors
+      active_border_color     = "#7287fd";
+      inactive_border_color   = "#9ca0b0";
+      bell_border_color       = "#df8e1d";
+
+      # OS Window titlebar colors
+      wayland_titlebar_color = "system";
+      macos_titlebar_color = "system";
+
+      # Tab bar colors
+      active_tab_foreground   = "#eff1f5";
+      active_tab_background   = "#8839ef";
+      inactive_tab_foreground = "#4c4f69";
+      inactive_tab_background = "#9ca0b0";
+      tab_bar_background      = "#bcc0cc";
+
+      # Colors for marks (marked text in the terminal)
+      mark1_foreground = "#eff1f5";
+      mark1_background = "#7287fd";
+      mark2_foreground = "#eff1f5";
+      mark2_background = "#8839ef";
+      mark3_foreground = "#eff1f5";
+      mark3_background = "#209fb5";
+
+      # The 16 terminal colors
       # black
-      color0 = "#3B4252";
-      color8 = "#4C566A";
+      color0 = "#5c5f77";
+      color8 = "#6c6f85";
       # red
-      color1 = "#BF616A";
-      color9 = "#BF616A";
+      color1 = "#d20f39";
+      color9 = "#d20f39";
       # green
-      color2 = "#A3BE8C";
-      color10= "#A3BE8C";
+      color2  = "#40a02b";
+      color10 = "#40a02b";
       # yellow
-      color3 = "#EBCB8B";
-      color11= "#EBCB8B";
+      color3  = "#df8e1d";
+      color11 = "#df8e1d";
       # blue
-      color4 = "#81A1C1";
-      color12= "#81A1C1";
+      color4  = "#1e66f5";
+      color12 = "#1e66f5";
       # magenta
-      color5 = "#B48EAD";
-      color13= "#B48EAD";
+      color5  = "#ea76cb";
+      color13 = "#ea76cb";
       # cyan
-      color6 = "#88C0D0";
-      color14= "#8FBCBB";
+      color6  = "#179299";
+      color14 = "#179299";
       # white
-      color7 = "#E5E9F0";
-      color15= "#ECEFF4";
+      color7  = "#acb0be";
+      color15 = "#bcc0cc";
 
       #map ctrl+shift+plus change_font_size current +1.0
       #map ctrl+shift+minus change_font_size current -1.0

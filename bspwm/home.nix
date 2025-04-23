@@ -13,7 +13,13 @@
   # nix-shell -p nix-prefetch-git jq --run "nix hash to-sri sha256:\$(nix-prefetch-git --url https://github.com/ibhagwan/picom --quiet --rev c4107bb6cc17773fdc6c48bb2e475ef957513c7a | jq -r '.sha256')"
 
   services.sxhkd.enable = true;
-  services.betterlockscreen.enable = true;
+  services.betterlockscreen = {
+    enable = true;
+    inactiveInterval = 60;
+  };
+  services.screen-locker = {
+    enable = lib.mkForce false;
+  };
   services.picom = {
     enable = true;
 
@@ -70,7 +76,8 @@
         strength = 7;
       };
       blur-background-exclude = [
-        "class_g != 'konsole' && class_g != 'kitty' && class_g != 'Rofi'"
+        # "class_g != 'konsole' && class_g != 'kitty' && class_g != 'Rofi'"
+        "class_g != 'konsole' && class_g != 'Rofi'"
       ];
 
       wintypes = {

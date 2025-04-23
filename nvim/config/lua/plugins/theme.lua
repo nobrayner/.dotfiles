@@ -1,14 +1,14 @@
 return {
-  "EdenEast/nightfox.nvim",
+  "catppuccin/nvim",
+  name = "catppuccin",
   priority = 1000,
   config = function()
-    require("nightfox").setup({
-      options = {
-        transparent = true,
-      },
+    local catpuccin = require("catppuccin")
+    catpuccin.setup({
+      flavour = "latte",
+      transparent_background = true,
     })
-
-    vim.cmd("colorscheme nordfox")
+    catpuccin.load()
 
     vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
   end,

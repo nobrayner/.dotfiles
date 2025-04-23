@@ -7,7 +7,7 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = "nord",
+				theme = "catppuccin",
 				icons_enable = true,
 				disabled_filetypes = {},
 				always_divide_middle = false,
