@@ -100,6 +100,7 @@
     git
     killall
     neofetch
+    pulseaudioFull
   ];
 
   fileSystems."/w" = {
