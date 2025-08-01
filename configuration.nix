@@ -1,10 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
     ./bspwm/system.nix
     ./steam/system.nix
     ./android/system.nix
+    ./thunar/system.nix
+    ./ssh/system.nix
   ];
 
   hardware.opengl.enable = true;
@@ -103,15 +105,22 @@
     pulseaudioFull
   ];
 
+  programs.nh = {
+    enable = true;
+    # clean.enable = true;
+    # clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/zorua/.dotfiles"; # sets NH_OS_FLAKE variable for you
+  };
+
   fileSystems."/w" = {
-    device = "/dev/sda1";
+    device = "/dev/disk/by-uuid/b2e5f496-e776-4b96-8d14-f151eea1321d";
     fsType = "btrfs";
-    neededForBoot = false;
+    options = ["nofail"];
   };
   fileSystems."/p" = {
-    device = "/dev/nvme0n1p1";
+    device = "/dev/disk/by-uuid/69f35d46-334a-41ec-a998-223b5a452964";
     fsType = "btrfs";
-    neededForBoot = false;
+    options = ["nofail"];
   };
 
   services.udisks2 = {

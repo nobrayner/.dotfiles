@@ -35,7 +35,6 @@
     nodejs
     discord
     pnpm
-    xfce.thunar
     rustup
     gcc
     audacity
