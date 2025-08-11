@@ -49,6 +49,10 @@ if [ -f '/home/zorua/.local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/home/
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/zorua/.local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/zorua/.local/bin/google-cloud-sdk/completion.zsh.inc'; fi
 
+fpath+=($(nix eval --raw nixpkgs#git-ps-rs)/share/zsh/site-functions)
+autoload -U compinit
+compinit
+
 # bun completions
 [ -s "/home/zorua/.bun/_bun" ] && source "/home/zorua/.bun/_bun"
 

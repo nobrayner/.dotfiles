@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./bin.nix
     ./bspwm/home.nix
     ./kitty/home.nix
     ./starship/home.nix
@@ -60,6 +61,7 @@
     gparted
     unrar
     samba
+    git-ps-rs
     
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
