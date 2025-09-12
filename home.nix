@@ -61,6 +61,7 @@
     gparted
     unrar
     samba
+    ffmpeg
     git-ps-rs
     
     # # Adds the 'hello' command to your environment. It prints a friendly

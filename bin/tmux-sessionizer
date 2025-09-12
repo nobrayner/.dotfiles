@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /w/* /p/g ~/.dotfiles ~/.setup -mindepth 1 -maxdepth 2 -name .git -type d -exec dirname {} \; | fzf)
+    selected=$(find /w/* /p/g/* ~/.dotfiles -mindepth 1 -maxdepth 2 -name .git -type d -exec dirname {} \; | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -11,15 +11,31 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    exit 0
-fi
-
+# Create new session if it doesn't exist
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+    # Decide what to run in the Editor window
+    if [[ -f "$selected/Session.vim" ]]; then
+        editor_cmd="bash -i -c 'nvim -S'"
+    else
+        editor_cmd="bash -i -c 'nvim .'"
+    fi
+
+    tmux new-session -ds $selected_name -c $selected -n "Editor"
+    tmux send-keys -t "$selected_name:Editor" "$editor_cmd" C-m
+
+    tmux new-window -t "$selected_name" -c "$selected" -n "Run"
+
+    tmux new-window -t "$selected_name" -c "$selected" -n "Shell"
+
+    tmux move-window -s "$selected_name:Editor" -t "$selected_name:1"
+    tmux select-window -t "$selected_name:1"
 fi
 
-tmux switch-client -t $selected_name
+if [[ -z $TMUX ]]; then
+    # Outside tmux → attach this terminal to the session
+    tmux attach-session -t "$selected_name"
+else
+    # Inside tmux → just switch the current client
+    tmux switch-client -t "$selected_name"
+fi
