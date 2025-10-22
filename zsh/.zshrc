@@ -43,12 +43,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/zorua/.local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/home/zorua/.local/bin/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/zorua/.local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/zorua/.local/bin/google-cloud-sdk/completion.zsh.inc'; fi
-
 fpath+=($(nix eval --raw nixpkgs#git-ps-rs)/share/zsh/site-functions)
 autoload -U compinit
 compinit
