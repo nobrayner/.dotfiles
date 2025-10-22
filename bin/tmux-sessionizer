@@ -16,9 +16,9 @@ selected_name=$(basename "$selected" | tr . _)
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     # Decide what to run in the Editor window
     if [[ -f "$selected/Session.vim" ]]; then
-        editor_cmd="bash -i -c 'nvim -S'"
+        editor_cmd="vi -S"
     else
-        editor_cmd="bash -i -c 'nvim .'"
+        editor_cmd="vi ."
     fi
 
     tmux new-session -ds $selected_name -c $selected -n "Editor"

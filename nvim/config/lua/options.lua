@@ -23,6 +23,7 @@ o.splitright = true
 o.ignorecase = true
 o.smartcase = true
 o.laststatus = 3
+o.winborder = "rounded"
 
 vim.cmd("set mouse=a")
 
