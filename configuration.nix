@@ -7,6 +7,7 @@
     ./android/system.nix
     ./thunar/system.nix
     ./ssh/system.nix
+    ./airplay/system.nix
   ];
 
   hardware.opengl.enable = true;
@@ -34,6 +35,10 @@
     jack.enable = true;
     wireplumber.enable = true;
   };
+  boot.extraModprobeConfig = ''
+    # Disable the audio interface for Logitech C930 webcam
+    options snd_usb_audio vid=0x046d pid=0x0891 device_setup=1
+  '';
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -104,6 +109,8 @@
     neofetch
     pulseaudioFull
   ];
+
+  programs.nix-ld.enable = true;
 
   programs.nh = {
     enable = true;
