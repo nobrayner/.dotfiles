@@ -13,6 +13,7 @@ alias pod="podman"
 alias podcom="podman-compose"
 alias docker="podman"
 alias lg="lazygit"
+alias airplay="uxplay -pin 5151 -p -n NixWindow -nh"
 
 # Better dir navigation
 alias cd="pushd"

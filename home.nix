@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -15,6 +15,8 @@
   ];
 
   nixpkgs.config.allowUnfreePredicate = _: true;
+
+  nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -60,6 +62,7 @@
     samba
     ffmpeg
     git-ps-rs
+    claude-code
     
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
