@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -10,21 +10,20 @@
     ./airplay/system.nix
   ];
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
-
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
+    nvidiaSettings = true;
 
     open = false;
 
-    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
   };
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -97,7 +96,8 @@
   fonts.packages = with pkgs; [
     fira-code
     jetbrains-mono
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ];  })
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
 
   # List packages installed in system profile. To search, run:
@@ -109,6 +109,7 @@
     killall
     neofetch
     pulseaudioFull
+    alsa-utils
   ];
 
   programs.nix-ld.enable = true;

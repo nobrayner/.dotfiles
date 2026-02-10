@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+KEY="$HOME/.ssh/id_ed25519"
+REAL_SSH_KEYGEN=$(which ssh-keygen)
+
+if ! ssh-add -l 2>/dev/null | grep -q "$(ssh-keygen -lf "$KEY" | awk '{print $2}')"; then
+  ssh-add "$KEY"
+fi
+
+exec "$REAL_SSH_KEYGEN" "$@"

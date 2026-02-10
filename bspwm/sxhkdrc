@@ -29,7 +29,7 @@ super + ctrl + x
 
 # screen off / lockscreen
 super + ctrl + l
-  betterlockscreen -l --off 10
+  ~/.dotfiles/bspwm/lock.sh
 
 Print
   flameshot gui --clipboard --accept-on-select
@@ -58,7 +58,7 @@ super + ctrl + shift + r
 
 # shutdown
 super + ctrl + shift + q
-  poweroff
+  bspc quit
 
 # close and kill
 super + {_,shift + }w

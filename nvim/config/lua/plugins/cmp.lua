@@ -23,21 +23,20 @@ return {
 				end,
 			},
 			window = {
-                completion = cmp.config.window.bordered({
-                    border = "rounded",
-                    winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-                }),
-                documentation = cmp.config.window.bordered({
-                    border = "rounded",
-                    winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-                }),
-            },
+				completion = cmp.config.window.bordered({
+					border = "rounded",
+					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+				}),
+				documentation = cmp.config.window.bordered({
+					border = "rounded",
+					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+				}),
+			},
 			mapping = cmp.mapping.preset.insert({
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete({}),
-				["<C-n>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({
+				["<Tab>"] = cmp.mapping.confirm({
 					select = false,
 				}),
 			}),

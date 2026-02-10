@@ -24,9 +24,9 @@
   home.homeDirectory = "/home/zorua";
 
   # ZSH
-  programs.zsh.enable = true;
-  home.file = {
-    ".zshrc".source = ./zsh/.zshrc;
+  programs.zsh = {
+    enable = true;
+    initExtra = builtins.readFile ./zsh/.zshrc;
   };
 
   services.playerctld.enable = true;
@@ -41,7 +41,6 @@
     pulseaudio
     playerctl
     tidal-hifi
-    beekeeper-studio
     telegram-desktop
     gimp
     zip

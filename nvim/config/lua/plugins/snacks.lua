@@ -5,19 +5,19 @@ return {
 		lazy = false,
 		---@type snacks.Config
 		opts = {
-			lazygit = { enabled = true },
+			lazygit = { enabled = false },
 			scratch = { enabled = true },
 			notifier = { enabled = true },
 		},
 		keys = {
 			-- Lazygit
-			{
-				"<leader>gg",
-				function()
-					Snacks.lazygit()
-				end,
-				desc = "Open lazy git",
-			},
+			-- {
+			-- 	"<leader>gg",
+			-- 	function()
+			-- 		Snacks.lazygit()
+			-- 	end,
+			-- 	desc = "Open lazy git",
+			-- },
 			-- Scratch
 			{
 				"<leader>.",
