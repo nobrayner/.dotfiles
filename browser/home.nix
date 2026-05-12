@@ -1,10 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 {
 
   programs.chromium = {
     enable = true;
-    package = pkgs.brave;
+    package = pkgsUnstable.ungoogled-chromium;
   };
 
   programs.firefox = {

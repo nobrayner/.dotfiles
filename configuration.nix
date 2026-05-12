@@ -39,6 +39,24 @@
     options snd_usb_audio vid=0x046d pid=0x0891 device_setup=1
   '';
 
+  services.hardware.openrgb = { 
+    enable = true; 
+    package = pkgs.openrgb-with-all-plugins; 
+    motherboard = "amd"; 
+    server = { 
+      port = 6742; 
+    }; 
+  };
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+  };
+  networking.firewall.allowedTCPPorts = [ 22 ]; # Allow SSH
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -3,7 +3,6 @@
 {
     environment.systemPackages = with pkgs; [
         lightdm
-        xdpyinfo
     ];
 
     programs.i3lock = {

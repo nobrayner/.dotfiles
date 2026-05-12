@@ -12,7 +12,7 @@ super + p
 
 # browser
 super + b
-  brave
+  chromium
 
 # music player
 super + m
