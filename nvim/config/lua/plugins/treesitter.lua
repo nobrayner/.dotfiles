@@ -27,6 +27,7 @@ return {
             "go",
             "gomod",
             "gosum",
+            "templ",
         }
 
         require("nvim-treesitter").setup()

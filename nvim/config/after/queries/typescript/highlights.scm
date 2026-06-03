@@ -20,3 +20,13 @@
   pattern: (identifier) @variable.declaration)
 (optional_parameter
   pattern: (identifier) @variable.declaration)
+
+; imported names -> treated like declarations (blue); also covers `import type {}`
+(import_clause
+  (identifier) @module.declaration) ; import X from "..."
+(namespace_import
+  (identifier) @module.declaration) ; import * as X
+(import_specifier
+  name: (identifier) @module.declaration) ; import { X }  (+ original of `X as Y`)
+(import_specifier
+  alias: (identifier) @module.declaration) ; import { X as Y }

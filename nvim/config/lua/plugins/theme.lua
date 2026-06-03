@@ -11,122 +11,104 @@ return {
             no_italic = true,
             no_bold = true,
             no_underline = true,
-            custom_highlights = function(C)
-                local base = { fg = C.text }
-                local dim = { fg = C.surface2 }
-                local str = { fg = C.rosewater } -- strings + numbers
-                local def = { fg = C.blue } -- function/top-level defs
-                local vdef = { fg = C.lavender } -- variable declarations
-                local tdef = { fg = C.pink } -- type declarations
-                local com = { fg = C.subtext0, bg = C.crust } -- comments: shaded region
-
-                return {
-                    -- Base text: keywords, usages, calls, types
-                    ["@variable"] = base,
-                    ["@variable.member"] = base,
-                    ["@variable.parameter"] = base,
-                    ["@variable.declaration"] = vdef,
-                    ["@property"] = base,
-                    ["@field"] = base,
-                    ["@parameter"] = base,
-                    ["@function.call"] = base,
-                    ["@function.method.call"] = base,
-                    ["@constructor"] = base,
-                    ["@type"] = base,
-                    ["@type.builtin"] = base,
-                    ["@type.qualifier"] = base,
-                    ["@type.definition"] = tdef,
-                    ["@namespace"] = base,
-                    ["@module"] = base,
-                    ["@keyword"] = base,
-                    ["@keyword.function"] = base,
-                    ["@keyword.return"] = base,
-                    ["@keyword.operator"] = base,
-                    ["@keyword.conditional"] = base,
-                    ["@keyword.repeat"] = base,
-                    ["@keyword.import"] = base,
-                    ["@keyword.coroutine"] = base,
-                    ["@conditional"] = base,
-                    ["@repeat"] = base,
-                    ["@exception"] = base,
-
-                    -- Dimmed punctuation (lightness cue only)
-                    ["@punctuation.delimiter"] = dim,
-                    ["@punctuation.bracket"] = dim,
-                    ["@punctuation.special"] = dim,
-                    ["@operator"] = dim,
-
-                    -- Strings + numbers -> teal
-                    ["@string"] = str,
-                    ["@string.escape"] = str,
-                    ["@character"] = str,
-                    ["@number"] = str,
-                    ["@number.float"] = str,
-                    ["@boolean"] = str,
-                    ["@constant"] = str,
-                    ["@constant.builtin"] = str,
-
-                    -- Function/top-level definitions -> blue
-                    ["@function"] = def,
-                    ["@function.method"] = def,
-
-                    -- Comments -> shaded region (colorblind-safe by area, not hue)
-                    ["@comment"] = com,
-                    ["Comment"] = com,
-
-                    -- Other cleanup to break fallbacks
-                    ["DiagnosticUnnecessary"] = { bg = "#d3daf4" },
-                    ["DiagnosticLineError"] = { bg = "#f3dede" },
-                    ["DiagnosticLineWarn"] = { bg = "#f1ecda" },
-                }
-            end,
         })
-        catpuccin.load()
-        vim.cmd.colorscheme("catppuccin-nvim")
 
-        -- Telescope + float highlights (kept from the shared repo config)
-        local colors = require("catppuccin.palettes").get_palette()
-        local Highlights = {
-            -- Telescope
-            TelescopeMatching = { fg = colors.flamingo },
-            TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
+        local C = require("catppuccin.palettes").get_palette("latte")
+
+        -- Palette — your semantic colors. Reference these when opting a group
+        -- back into color in `colored` below.
+        local base = { fg = C.text } -- neutral foreground (the default for everything)
+        local dim = { fg = C.surface2 } -- lightness-only cue (e.g. punctuation)
+        local str = { fg = C.rosewater } -- strings + numbers
+        local def = { fg = C.blue } -- function/type "declarations"
+        local vdef = { fg = C.lavender } -- variable declarations
+        local tdef = { fg = C.pink } -- type declarations
+        local com = { fg = C.subtext0, bg = C.crust } -- comments: shaded region
+
+        -- The ONLY treesitter capture groups that carry color. Everything else
+        -- is flattened to `base` (see apply_theme). Add a line here whenever you
+        -- decide a group is worth a hue — that's the whole maintenance surface.
+        -- Note: children inherit nothing automatically here (flatten sets each
+        -- leaf to base individually), so list a child explicitly if you want it
+        -- colored — e.g. @function is `def` but @function.call stays base.
+        local colored = {
+            -- strings + numbers -> rosewater
+            ["@string"] = str,
+            ["@string.escape"] = str,
+            ["@character"] = str,
+            ["@number"] = str,
+            ["@number.float"] = str,
+            ["@boolean"] = str,
+            ["@constant"] = str,
+            ["@constant.builtin"] = str,
+
+            -- dimmed punctuation / operators (lightness-only cue)
+            ["@punctuation.delimiter"] = dim,
+            ["@punctuation.bracket"] = dim,
+            ["@punctuation.special"] = dim,
+            ["@operator"] = dim,
+            ["@tag.delimiter"] = dim, -- < > /> </ in templ/jsx/html
+
+            -- function / "declarations" -> blue
+            ["@function"] = def,
+            ["@function.method"] = def,
+            ["@module.declaration"] = def, -- go package name + js/ts imports
+            ["@variable.declaration"] = vdef, -- from after/queries (let/const/var, params)
+            ["@type.definition"] = tdef,
+
+            -- comments -> shaded region
+            ["@comment"] = com,
+            ["@keyword.defer"] = com, -- go `defer` -> obvious shaded box
+            ["Comment"] = com, -- non-treesitter comment fallback
+        }
+
+        -- Marker captures that aren't color-bearing; don't flatten these.
+        local skip = { ["@none"] = true, ["@spell"] = true, ["@nospell"] = true, ["@conceal"] = true }
+
+        -- Non-treesitter UI tweaks (Telescope, floats, diagnostics).
+        local ui = {
+            TelescopeMatching = { fg = C.flamingo },
+            TelescopeSelection = { fg = C.text, bg = C.surface0, bold = true },
             TelescopeNormal = { bg = "NONE" },
             TelescopePromptPrefix = { bg = "NONE" },
-            TelescopePromptBorder = { bg = "NONE", fg = colors.surface0 },
-            TelescopeResultsBorder = { bg = "NONE", fg = colors.surface0 },
-            TelescopePreviewBorder = { bg = "NONE", fg = colors.surface0 },
-            TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-            TelescopeResultsTitle = { bg = colors.flamingo, fg = colors.mantle },
-            TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-
-            -- Other
+            TelescopePromptBorder = { bg = "NONE", fg = C.surface0 },
+            TelescopeResultsBorder = { bg = "NONE", fg = C.surface0 },
+            TelescopePreviewBorder = { bg = "NONE", fg = C.surface0 },
+            TelescopePromptTitle = { bg = C.pink, fg = C.mantle },
+            TelescopeResultsTitle = { bg = C.flamingo, fg = C.mantle },
+            TelescopePreviewTitle = { bg = C.green, fg = C.mantle },
             NormalFloat = { bg = "NONE" },
-            FloatBorder = { bg = "NONE", fg = colors.surface0 },
-            -- Pmenu = { bg = "NONE", fg = colors.surface0 },
+            FloatBorder = { bg = "NONE", fg = C.surface0 },
+            DiagnosticUnnecessary = { bg = "#d3daf4" },
+            DiagnosticLineError = { bg = "#f3dede" },
+            DiagnosticLineWarn = { bg = "#f1ecda" },
+            DiagnosticVirtualLinesError = { bg = "#efced3", fg = "#7e2533" },
+            DiagnosticVirtualLinesWarn = { bg = "#ece0c0", fg = "#6e5621" },
+            DiagnosticVirtualLinesInfo = { bg = "#b6d2fb", fg = "#0c2e70" },
+            DiagnosticVirtualLinesHint = { bg = "#fcd2f7", fg = "#5e2156" },
         }
-        for hl, col in pairs(Highlights) do
-            vim.api.nvim_set_hl(0, hl, col)
+
+        -- Re-applied on every ColorScheme so it survives reloads.
+        local function apply_theme()
+            -- 1. base by default: flatten every @-capture group to neutral text
+            for name in pairs(vim.api.nvim_get_hl(0, {})) do
+                if name:sub(1, 1) == "@" and not skip[name] then
+                    vim.api.nvim_set_hl(0, name, base)
+                end
+            end
+            -- 2. opt specific groups back into color
+            for name, col in pairs(colored) do
+                vim.api.nvim_set_hl(0, name, col)
+            end
+            -- 3. UI tweaks
+            for name, col in pairs(ui) do
+                vim.api.nvim_set_hl(0, name, col)
+            end
         end
 
-        local function diag_hl()
-            vim.api.nvim_set_hl(0, "DiagnosticVirtualLinesError", {
-                bg = "#d63952",
-                fg = "#fbeaee",
-            })
-            vim.api.nvim_set_hl(0, "DiagnosticVirtualLinesWarn", {
-                bg = "#a8842f",
-                fg = "#fbf3e0",
-            })
-            vim.api.nvim_set_hl(0, "DiagnosticVirtualLinesInfo", {
-                bg = "#d4e4fb",
-                fg = "#1c3a6e",
-            })
-            vim.api.nvim_set_hl(0, "DiagnosticVirtualLinesHint", {
-                bg = "#cdc4e8",
-                fg = "#3a2a6e",
-            })
-        end
-        vim.api.nvim_create_autocmd("ColorScheme", { callback = diag_hl })
-        diag_hl()
+        vim.api.nvim_create_autocmd("ColorScheme", { callback = apply_theme })
+        catpuccin.load()
+        vim.cmd.colorscheme("catppuccin-nvim")
+        apply_theme()
     end,
 }

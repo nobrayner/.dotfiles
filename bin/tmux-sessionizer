@@ -3,7 +3,12 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /w/* /p/g/* ~/.dotfiles -mindepth 1 -maxdepth 2 -name .git -type d -exec dirname {} \; | fzf)
+    # Per-host search roots (Lostlorn-Forest = mac, otherwise the nixos box)
+    case "$(hostname -s)" in
+        Lostlorn-Forest) roots=("$HOME"/w/* "$HOME"/p/*) ;;
+        *)               roots=(/w/g/* /p/g/*) ;;
+    esac
+    selected=$(find "${roots[@]}" ~/.dotfiles -mindepth 1 -maxdepth 2 -name .git -type d -exec dirname {} \; | fzf)
 fi
 
 if [[ -z $selected ]]; then
