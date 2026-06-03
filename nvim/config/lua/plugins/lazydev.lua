@@ -1,12 +1,12 @@
 return {
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {
-			library = {
-				"lazy.nvim",
-				"snacks.nvim",
-			},
-		},
-	},
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                "lazy.nvim",
+                "snacks.nvim",
+            },
+        },
+    },
 }

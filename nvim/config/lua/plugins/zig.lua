@@ -1,3 +1,3 @@
 return {
-	"ziglang/zig.vim",
+    "ziglang/zig.vim",
 }
