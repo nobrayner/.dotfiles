@@ -30,3 +30,15 @@
   name: (identifier) @module.declaration) ; import { X }  (+ original of `X as Y`)
 (import_specifier
   alias: (identifier) @module.declaration) ; import { X as Y }
+
+; type declarations -> pink
+(type_alias_declaration
+  name: (type_identifier) @type.definition) ; type Foo = ...
+(interface_declaration
+  name: (type_identifier) @type.definition) ; interface Foo {}
+(class_declaration
+  name: (type_identifier) @type.definition) ; class Foo {}
+(abstract_class_declaration
+  name: (type_identifier) @type.definition) ; abstract class Foo {}
+(enum_declaration
+  name: (identifier) @type.definition) ; enum Foo {}

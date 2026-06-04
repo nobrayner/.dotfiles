@@ -5,6 +5,7 @@
     home.packages = with pkgs; [
         lua51Packages.luarocks
         lua51Packages.lua
+        inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.tree-sitter
     ];
 
     home.file."./.config/nvim" = {

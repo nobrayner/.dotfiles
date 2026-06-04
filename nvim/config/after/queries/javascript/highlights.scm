@@ -30,3 +30,7 @@
   name: (identifier) @module.declaration) ; import { X }  (+ original of `X as Y`)
 (import_specifier
   alias: (identifier) @module.declaration) ; import { X as Y }
+
+; type declarations -> pink
+(class_declaration
+  name: (identifier) @type.definition) ; class Foo {}

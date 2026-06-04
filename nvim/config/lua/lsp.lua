@@ -8,6 +8,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local keymap = vim.keymap
         local opts = { buffer = bufnr, silent = true }
 
+        -- Treesitter captures drive color; LSP semantic tokens fight that model.
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
+
         keymap.set("n", "K", vim.lsp.buf.hover, opts)
         keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         keymap.set("n", "<leader>rf", vim.lsp.buf.format, opts)
