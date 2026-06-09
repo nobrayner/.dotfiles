@@ -22,6 +22,11 @@
 (package_clause
   (package_identifier) @module.declaration)
 
+; struct field declarations -> treat like variable declarations (upstream
+; tags these @variable.member, which the theme leaves neutral)
+(field_declaration
+  name: (field_identifier) @variable.declaration)
+
 ; make `defer` glaringly obvious -> rendered in the comment style (shaded box)
 (defer_statement
   "defer" @keyword.defer)

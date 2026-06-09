@@ -13,3 +13,9 @@
   (expression)
   (dynamic_class_attribute_value)
 ] @none
+
+; struct field declarations (inherited go grammar) -> variable declarations.
+; templ inherits go, so the upstream @variable.member capture applies here too;
+; recapture as a declaration to match the go after-query.
+(field_declaration
+  name: (field_identifier) @variable.declaration)
